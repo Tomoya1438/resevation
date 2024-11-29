@@ -1,2 +1,22 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="container">
+<div class="row">
+<div class="col-lg-8">
+<div class="text-center">
+<h2>ようこそ Clean Ground ホテル へ</h2>
+</div>
+<br>
+<h3>
+<p>ここでは当ホテルや地域のイベント情報をお届けします。</p>
+</h3>
+<h4>
+<br>
+<p>会員登録がお済みでない方は<%= link_to "こちら", new_user_registration_path %></p>
+<p>会員登録がお済みの方は<%= link_to "こちら", new_user_session_path %>  からログインをお願いします。</p>
+</h4>
+</div>
+<div class="col-lg-4">
+画像
+</div>
+</div>
+</div>
+</div>
