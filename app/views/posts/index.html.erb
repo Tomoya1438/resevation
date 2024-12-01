@@ -1,0 +1,10 @@
+<h1>イベント一覧</h1>
+<% @posts.each do |post| %>
+  <div>
+    <p>イベント名：<%= post.title%></p>
+    <p>ユーザーネーム：<%= post.user.name %></p>
+    <%= link_to post_path(post.id) do %>
+      <%= image_tag post.get_image %>
+    <% end %>
+  </div>
+<% end %>
