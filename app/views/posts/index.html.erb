@@ -1,10 +1,25 @@
 <h1>イベント一覧</h1>
-<% @posts.each do |post| %>
-  <div>
-    <p>イベント名：<%= post.title%></p>
-    <p>ユーザーネーム：<%= post.user.name %></p>
+<div class="card-list-container py-5">
+  <% @posts.each do |post| %>
+  <div class="card w-50 mx-auto mt-4 shadow-lg">
     <%= link_to post_path(post.id) do %>
-      <%= image_tag post.get_image %>
+      <%= image_tag post.get_image, class: "card-img-top"; %>
     <% end %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12">
+          <p class="card-title">
+            <%= link_to(post_path(post.id), class: "text-dark") do %>
+              <strong><i class="far fa-flag"></i><span> <%= post.title %></span></strong>
+            <% end %>
+          </p>
+          <p class="card-text">説明：<%= post.body %></p>
+          <span><i class="fas fa-user"></i> By <%= post.user.name %> ｜ </span>
+          
+        </div>
+      </div>
+    </div>
   </div>
-<% end %>
+  <% end %>
+  
+</div>
