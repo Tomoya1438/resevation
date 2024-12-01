@@ -1,25 +1,31 @@
 <h1>イベント一覧</h1>
 <div class="card-list-container py-5">
   <% @posts.each do |post| %>
-  <div class="card w-50 mx-auto mt-4 shadow-lg">
-    <%= link_to post_path(post.id) do %>
-      <%= image_tag post.get_image, class: "card-img-top"; %>
-    <% end %>
+  <div class="card w-50 mx-auto mb-5 shadow-lg">
+
     <div class="card-body">
       <div class="row">
-        <div class="col-12">
-          <p class="card-title">
-            <%= link_to(post_path(post.id), class: "text-dark") do %>
-              <strong><i class="far fa-flag"></i><span> <%= post.title %></span></strong>
-            <% end %>
-          </p>
-          <p class="card-text">説明：<%= post.body %></p>
-          <span><i class="fas fa-user"></i> By <%= post.user.name %> ｜ </span>
-          
+        <div class="col-2">
+        </div>
+        <div class="col-10">
+          <h2>
+            <p class="card-title">
+              <%= link_to(post_path(post.id), class: "text-dark") do %>
+                <strong><i class="far fa-flag"></i><span> <%= post.title %></span></strong>
+              <% end %>
+            </p>
+          </h2> 
         </div>
       </div>
     </div>
+    <%= link_to post_path(post.id) do %>
+      <%= image_tag post.get_image, class: "card-img-top"; %>
+    <% end %>
+    <div class="text-center">
+      <p>掲載日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
+      <span><i class="fas fa-user"></i> <%= post.user.name %> ｜ </span>
+      <h3><span><%= link_to "お問い合わせ", post_path(post.id), class: "text-dark" %></span></h3>
+    </div>
   </div>
   <% end %>
-  
 </div>

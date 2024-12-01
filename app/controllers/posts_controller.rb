@@ -25,7 +25,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-       flash[:notice] = "You have updated book successfully."
+       flash[:notice] = "編集完了"
        redirect_to @post
     else
        @posts = Post.all
