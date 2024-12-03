@@ -19,12 +19,13 @@
       </div>
     </div>
     <%= link_to post_path(post.id) do %>
-      <%= image_tag post.get_image, class: "card-img-top"; %>
+      <%= image_tag post.get_image, class: "card-img-top", style: "max-width: auto; max-height: 800px;" %>
     <% end %>
     <div class="text-center">
       <p>掲載日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
-      <span><i class="fas fa-user"></i> <%= post.user.name %> ｜ </span>
+      <span><i class="fas fa-user"></i> <%= post.user.name %></span>
       <h3><span><%= link_to "お問い合わせ", post_path(post.id), class: "text-dark" %></span></h3>
+      <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p>
     </div>
   </div>
   <% end %>
