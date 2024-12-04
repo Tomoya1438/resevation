@@ -17,14 +17,14 @@ class UsersController < ApplicationController
   def destroy
     user = User.find(params[:id])  
     user.destroy  
-    redirect_to '/'   
+    redirect_to new_user_registration_path   
   end
 
 
   private
 
   def user_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(:name, :profile_image)
   end
   
   def is_matching_login_user
