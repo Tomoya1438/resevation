@@ -1,0 +1,25 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>コメント内容</th>
+      <th>投稿者</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% comments.each do |comment| %>
+      <tr>
+        <td><%= comment.id %></td>
+        <td><%= comment.comment %></td>
+        <td><%= link_to_if params[:action] == "index", comment.user.name, admin_user_path(comment.user) %></td>
+        <td>
+          <%= link_to 'コメント削除', admin_comment_path(comment),
+                              method: :delete,
+                              class: "btn btn-outline-danger",
+                              data: { confirm: "本当に削除しますか？" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,10 +1,27 @@
 Rails.application.routes.draw do
-  devise_for :users
+
+  devise_for :admins, path: 'admin', controllers: {
+    sessions: 'admin/admins/sessions'
+  }
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
+
   root to: "homes#top"
   get 'homes/about', to: 'homes#about', as: 'about'
-  resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+  resources :posts, only: [:index, :show] do
     resources :comments, only: [:create, :destroy]
   end
   resources :users, only: [:show, :edit, :update, :destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  namespace :admin do
+    root to: 'users#index'
+    resources :users, only: [:index, :show, :destroy]
+    resources :posts
+    resources :comments, only: [:index, :destroy]
+  end
+
+  get "search" => "searches#search"
 end

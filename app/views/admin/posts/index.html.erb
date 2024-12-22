@@ -1,0 +1,31 @@
+<h1>イベント一覧</h1>
+<div class="card-list-container py-5">
+  <% @posts.each do |post| %>
+  <div class="card w-50 mx-auto mb-5 shadow-lg">
+
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-10">
+          <h2>
+            <p class="card-title">
+              <%= link_to(admin_post_path(post), class: "text-dark") do %>
+                <strong><i class="far fa-flag"></i><span> <%= link_to post.title, admin_post_path(post) %></span></strong>
+              <% end %>
+            </p>
+          </h2> 
+        </div>
+      </div>
+    </div>
+    <%= link_to admin_post_path(post) do %>
+      <%= image_tag post.get_image, class: "card-img-top", style: "max-width: auto; max-height: 800px;" %>
+    <% end %>
+    <div class="text-center">
+      <p>掲載日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
+     
+      <p><%= "#{post.comments.count} コメント" %></p>
+    </div>
+  </div>
+  <% end %>
+</div>

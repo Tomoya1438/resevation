@@ -18,26 +18,9 @@
     </div>  
   </div>
 
-  <div class="row">
-    <div class="col-lg-7">
-      イベント投稿一覧
-      <% @posts.each do |post, comment| %>
-        <div>
-          <%= link_to post_path(post.id) do %>
-            <%= image_tag post.get_image, style: 'max-width: 500px; max-height: 900px;' %>
-          <% end %>
-          <p>イベント名：<%= post.title %></p>
-          <p>説明：<%= post.body %></p>
-          <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p>
-        </div>
-      <% end %>
-    </div>
-    <div class="col-lg-5">
-      コメント投稿一覧
-      <p><% @posts.each do |comment| %></p>
-        <%= comment.created_at.strftime('%Y/%m/%d') %> 
-        <%= comment.comments %>
-      <% end %>
-    </div>
-  </div>  
+  コメント投稿一覧
+  <p><% @comments.each do |comment| %></p>
+    <%= comment.created_at.strftime('%Y/%m/%d') %> 
+    <%= comment.comment %>
+  <% end %>
 </div>

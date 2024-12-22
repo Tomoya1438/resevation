@@ -11,23 +11,15 @@
         </h2>
         
         <p>掲載日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-        <p>ユーザーネーム：<%= @post.user.name %></p>
-        <% if @post.user == current_user %>
-          <%= link_to "編集", edit_post_path(@post.id) %>
-          |
-        <% end %>
-        <% if @post.user == current_user %>
-          <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-        <% end %>
       </div>
     </div>
     
     <div class="col-lg-4">
       
         <div class="text-center">
-          <p>コメント件数：<%= @post.comments.count %></p>
+          <p>コメント件数：<%= @comments.count %></p>
           <div class="card w-auto mx-auto mt-4 shadow-lg">
-            <% @post.comments.each do |comment| %>
+            <% @comments.each do |comment| %>
               <p><%= image_tag comment.user.get_profile_image(100,100) %><%= comment.user.name %>              
               <%= comment.created_at.strftime('%Y/%m/%d') %></p>
               
