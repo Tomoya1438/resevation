@@ -58,8 +58,8 @@
       <% flash.each do |message_type, message| %>
         <div class="flash-message <%= message_type %>"><%= message %></div>
       <% end %>
-      <div class="container">
-        <%= yield %>
+      <%= render 'searches/serach' %>
+      <%= yield %>
       </div>
     </main>
     <footer>

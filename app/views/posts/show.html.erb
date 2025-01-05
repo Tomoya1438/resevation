@@ -20,14 +20,12 @@
           <p>コメント件数：<%= @comments.count %></p>
           <div class="card w-auto mx-auto mt-4 shadow-lg">
             <% @comments.each do |comment| %>
-              <p><%= image_tag comment.user.get_profile_image(100,100) %><%= comment.user.name %>              
-              <%= comment.created_at.strftime('%Y/%m/%d') %></p>
-              
-              <p><%= comment.comment %></p>
-              
+              <p><%= link_to(image_tag(comment.user.get_profile_image(100, 100)) + comment.user.name, user_path(comment.user)) %></p>              
+              <%= comment.comment %>
+              <p><%= comment.created_at.strftime('%Y/%m/%d') %>
               <% if comment.user == current_user %>
                 <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-              <% end %>
+              <% end %></p>
             <% end %>
         </div>
       </div>
