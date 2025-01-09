@@ -21,7 +21,9 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :destroy]
     resources :posts
     resources :comments, only: [:index, :destroy]
+    get "search" => "searches#search"
   end
 
   get "search" => "searches#search"
+ 
 end

@@ -54,13 +54,12 @@
         </div>
       </nav>
     </header>
-    <main class="mb-auto">
+    <main class="mb-auto container">
       <% flash.each do |message_type, message| %>
         <div class="flash-message <%= message_type %>"><%= message %></div>
       <% end %>
-      <%= render 'searches/serach' %>
+      <%= render 'admin/searches/serach' %>
       <%= yield %>
-      </div>
     </main>
     <footer>
       <div class="container mt5">
