@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   has_one_attached :image
   belongs_to :admin
   has_many :comments, dependent: :destroy
+  has_many :joins, dependent: :destroy
 
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }
@@ -27,6 +28,10 @@ class Post < ApplicationRecord
     else
       @post = Post.all
     end
+  end
+
+  def joined_by?(user)
+    joins.exists?(user_id: user.id)
   end
   
 end

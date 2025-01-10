@@ -12,4 +12,5 @@ class Admin::CommentsController < ApplicationController
     flash[:noticce] = "削除しました"
     redirect_to admin_comments_path
   end
+
 end

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get 'homes/about', to: 'homes#about', as: 'about'
   resources :posts, only: [:index, :show] do
+    resource :join, only: [:create, :destroy] 
     resources :comments, only: [:create, :destroy]
   end
   resources :users, only: [:show, :edit, :update, :destroy]
@@ -21,9 +22,11 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :destroy]
     resources :posts
     resources :comments, only: [:index, :destroy]
+    resources :joins, only: [:index]
     get "search" => "searches#search"
   end
 
   get "search" => "searches#search"
- 
+
+
 end

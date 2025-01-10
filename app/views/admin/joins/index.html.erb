@@ -1,0 +1,23 @@
+<h1>参加希望一覧</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>参加ID</th>
+      <th>コメント内容</th>
+      <th>投稿者</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @joins.each do |join| %>
+      <tr>
+        <td><%= join.id %></td>
+        <td>l</td>
+        <td><%= link_to_if params[:action] == "index", join.user.name, admin_user_path(join.user) %></td>
+        <td>
+h
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

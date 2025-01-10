@@ -1,0 +1,2 @@
+module Admin::JoinsHelper
+end
