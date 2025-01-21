@@ -20,9 +20,13 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: 'users#index'
     resources :users, only: [:index, :show, :destroy]
-    resources :posts
+    resources :posts do
+      member do
+        get :join_users
+      end
+    end
     resources :comments, only: [:index, :destroy]
-    resources :joins, only: [:index]
+    #resources :joins, only: [:index]
     get "search" => "searches#search"
   end
 

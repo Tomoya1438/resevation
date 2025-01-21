@@ -25,7 +25,7 @@
       <p>掲載日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
      
       <p><%= "#{post.comments.count} コメント" %></p>
-      <p>参加希望<%= link_to post.joins.count, admin_joins_path %></p> 
+      <p>参加希望<%= link_to post.joins.count, join_users_admin_post_path(post) %></p> 
     </div>
   </div>
   <% end %>

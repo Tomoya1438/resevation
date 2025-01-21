@@ -1,4 +1,6 @@
 class JoinsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     post = Post.find(params[:post_id])
     @join = current_user.joins.new(post_id: post.id)

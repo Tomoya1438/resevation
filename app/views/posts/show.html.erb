@@ -14,13 +14,13 @@
           <% if @post.joined_by?(current_user) %>
         <p>
           <%= link_to post_join_path(@post), method: :delete do %>
-            ♥<%= @post.joins.count %> いいね
+            ♥<%= @post.joins.count %> 参加希望
           <% end %>
         </p>
         <% else %>
         <p>
           <%= link_to post_join_path(@post), method: :post do %>
-            ♡<%= @post.joins.count %> いいね
+            ♡<%= @post.joins.count %> 参加希望
           <% end %>
     </p>
   <% end %>

@@ -11,6 +11,11 @@ class Admin::PostsController < ApplicationController
     @comments = @post.comments
   end
 
+  def join_users
+    @post = Post.find(params[:id])
+    @join_users = @post.join_users
+  end
+
   def new
     @post = Post.new 
   end

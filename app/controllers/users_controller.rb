@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  before_action :is_matching_login_user, only: [:edit, :update, :destroy]
+
   def show
     @user = User.find(params[:id])
     @comments = @user.comments
@@ -28,9 +31,9 @@ class UsersController < ApplicationController
   end
   
   def is_matching_login_user
-    user = User.find(params[:id])
-    unless user.id == current_user.id
-      redirect_to post_images_path
+    @user = User.find_by_id(params[:id])
+    unless @user == current_user
+      redirect_to posts_path
     end
   end
   

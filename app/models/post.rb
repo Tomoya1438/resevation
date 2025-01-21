@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   belongs_to :admin
   has_many :comments, dependent: :destroy
   has_many :joins, dependent: :destroy
+  has_many :join_users, through: :joins, source: :user
 
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }
