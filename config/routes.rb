@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
   resources :users, only: [:show, :edit, :update, :destroy]
+  post 'guest_login', to: 'users#guest_login'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   namespace :admin do

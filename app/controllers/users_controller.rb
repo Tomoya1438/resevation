@@ -23,6 +23,11 @@ class UsersController < ApplicationController
     redirect_to new_user_registration_path   
   end
 
+  def guest_login
+    @user = User.guest_login
+    sign_in(@user)
+    redirect_to root_path
+  end
 
   private
 
