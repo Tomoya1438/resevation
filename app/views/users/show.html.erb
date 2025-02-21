@@ -1,26 +1,31 @@
-<div class="container">
+<div class="container mt-4">
   <div class="row">
-    <div class="col-lg-2">
-      <%= image_tag @user.get_profile_image(150,150) %>
-    </div>  
-    <div class="col-lg-6">
-      <h3><%= @user.name %></h3>
-    </div> 
-    <div class="col-lg-2">
-      <% if @user == current_user %>
-        <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-      <% end %>
-    </div> 
-    <div class="col-lg-2">
-      <% if @user == current_user %>
-        <%= link_to "退会", user_path(@user), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-      <% end %>
-    </div>  
-  </div>
+    <div class="col-md-3">
+      <div class="card">
+        <%= image_tag @user.get_profile_image(150,150) %>
+        <div class="card-body">
+          <h3 class="d-flex justify-content-center my-3"><%= @user.name %></h3>
+          <% if @user == current_user %>
+            <p><%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-outline-warning btn-block" %></p>
+          <% end %>
+          <% if @user == current_user %>
+            <%= link_to "退会", user_path(@user), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger btn-block" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
-  コメント投稿一覧
-  <p><% @comments.each do |comment| %></p>
-    <%= comment.created_at.strftime('%Y/%m/%d') %> 
-    <%= comment.comment %>
-  <% end %>
+    <div class="col-md-9">
+      <h2>コメント投稿一覧</h2>
+      <table class="table">
+        <% @comments.each do |comment| %>
+          <tr>
+            <td width="50%"><%= comment.comment %></td>
+            <td width="23%">投稿日時<%= comment.created_at.strftime('%Y/%m/%d') %></td>
+            <td width="27%"><%= link_to "イベントを見る", post_path(comment.post), class: "btn btn-outline-primary" %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
 </div>
